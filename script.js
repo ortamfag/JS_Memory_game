@@ -27,7 +27,6 @@ printNumber()
 
 let elemStorage = document.querySelectorAll('.game__item');
 
-
 elemStorage.forEach((event) => {
     event.addEventListener('click', () => {
         event.classList.add('finally')
@@ -35,7 +34,7 @@ elemStorage.forEach((event) => {
         choiceElements.push(event.dataset.item)
 
 
-        if (choiceElements[1] !== undefined) {
+        if (choiceElements.length === 2) {
             if (choiceElements[0] === choiceElements[1]) {
                 console.log('правильно')
                 choiceElements = []
@@ -61,7 +60,7 @@ elemStorage.forEach((event) => {
             }
         }
 
-        if(counterRightAnswers === 1) {
+        if(counterRightAnswers === 6) {
             gameButton.innerHTML += '<button id="reset" onclick="resetButton()">Играть снова?</button>'
         }
 
@@ -69,8 +68,7 @@ elemStorage.forEach((event) => {
     })
 })
 
-function resetButton() {
-    console.log('клик')
+const resetButton = () => {
     elemStorage.forEach(elem => {
         elem.classList.remove('right', 'finally');
         console.log(elem)
